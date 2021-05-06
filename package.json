@@ -1,0 +1,46 @@
+{
+  "name": "typescript-graphql",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server/server",
+    "start": "node dist/server/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "build-server": "tsc -b src/server",
+    "dev-server": "tsc-watch --noClear -b ./src/server/tsconfig.json --onSuccess \"node --enable-source-maps dist/server/server \"",
+    "client": "$(npm bin)/parcel build ./src/client/index.html -d build",
+    "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma generate",
+    "generate:nexus": "ts-node --transpile-only src/server/schema"
+  },
+  "dependencies": {
+    "@prisma/client": "2.22.0",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.3",
+    "express": "4.17.1",
+    "express-graphql": "0.12.0",
+    "graphql": "15.5.0",
+    "graphql-scalars": "1.9.3",
+    "nexus": "1.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "tsc-watch": "^4.2.9"
+  },
+  "devDependencies": {
+    "@types/express": "4.17.11",
+    "@types/node": "12.20.12",
+    "parcel-bundler": "^1.12.5",
+    "prisma": "2.22.0",
+    "ts-node": "9.1.1",
+    "ts-node-dev": "1.1.6",
+    "typescript": "4.2.4"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

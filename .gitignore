@@ -1,0 +1,7 @@
+node_modules/
+dist/
+build/
+.cache/
+src/generated/
+*.env*
+*.db
